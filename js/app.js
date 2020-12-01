@@ -46,13 +46,20 @@ function validarFormulario(e) {
     } else {
         e.target.classList.add('border', 'border-red-500');
 
-        mostrarError();
+        mostrarError('Todos los campos son obligatorios');
+    }
+
+    if(e.target.type === 'email') {
+        const resultado = e.target.value.indexOf('@');
+        if(resultado < 0) {
+            mostrarError('El email no es valido');
+        }
     }
 }
 
-function mostrarError(){
+function mostrarError(mensaje){
     const mensajeError = document.createElement('p');
-    mensajeError.textContent = 'Todos los campos son obligatorios';
+    mensajeError.textContent = mensaje;
     mensajeError.classList.add('border', 'border-red-500', 'background-red-100', 'text-red-500', 'p-3', 'mt-5', 'text-center', 'error');
 
     const errores = document.querySelectorAll('.error');
