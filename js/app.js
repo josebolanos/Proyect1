@@ -6,11 +6,6 @@ function eventListener() {
     document.addEventListener('DOMContentLoaded', iniciarApp);
 
 }
-eventListener();
-function eventListener() {
-    document.addEventListener('DOMContentLoaded', iniciarApp);
-
-}
 
 
 
@@ -22,7 +17,8 @@ function eventListener() {
 // Funciones
 
 function iniciarApp() {
-    console.log('Inicilizando');
+    btnEnviar.disabled = true;
+    btnEnviar.classList.add('cursor-not-allowed', 'opacity-50');
 }
 
 
