@@ -3,9 +3,6 @@ const btnEnviar = document.querySelector('#enviar');
 const btnReset = document.querySelector('#resetBtn');
 const formulario = document.querySelector('#enviar-mail');
 
-
-
-
 //Variables para campos
 const email = document.querySelector('#email');
 const asunto = document.querySelector('#asunto');
@@ -25,13 +22,17 @@ function eventListener() {
     asunto.addEventListener('blur', validarFormulario);
     mensaje.addEventListener('blur', validarFormulario);
 
-     // Reiniciar el formulario
-     btnReset.addEventListene('click', resetearFormulario);
 
-    
+     // Reiniciar el formulario
+     btnReset.addEventListener('click', resetearFormulario);
+
 
     // Enviar email
     formulario.addEventListener('submit', enviarEmail);
+
+
+
+ 
 
    
 }
@@ -111,11 +112,7 @@ function mostrarError(mensaje){
         formulario.appendChild(mensajeError);
 
     }
-
-   
-
 }
-
 
 // Envia elemail
 function enviarEmail(e) {
@@ -127,7 +124,7 @@ function enviarEmail(e) {
 
 
     // Despues de 3s ocultar el spinne y mostrar el mensaje
-    setTimeout(() => {
+    setTimeout( () => {
         spinner.style.display = 'none';
 
         // Mensaje que se envio correctamente
@@ -142,10 +139,17 @@ function enviarEmail(e) {
             resetearFormulario(); 
         }, 5000);
     }, 3000 );
+
+
 }
 
 // Funcion que resetear el formulario
-function resetearFormulario() {
+function resetearFormulario(e) {
     formulario.reset();
-    iniciarApp();
+    iniciarApp()
+    e.preventDefault();
+
+
 }
+
+
